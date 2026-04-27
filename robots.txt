@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /assets/js/
+
+Sitemap: https://smpn1sape.web.id/sitemap.xml

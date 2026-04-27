@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://smpn1sape.web.id/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://smpn1sape.web.id/ppdb.php</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://smpn1sape.web.id/pages/profil.php</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smpn1sape.web.id/pages/visi-misi.php</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://smpn1sape.web.id/pages/postingan.php</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://smpn1sape.web.id/pages/prestasi.php</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://smpn1sape.web.id/pages/ekstrakurikuler.php</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://smpn1sape.web.id/pages/fasilitas.php</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://smpn1sape.web.id/pages/agenda.php</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+</urlset>
