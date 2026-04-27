@@ -5,16 +5,17 @@ $kepsek = $conn->query("SELECT * FROM pimpinan WHERE jabatan='Kepala Sekolah' AN
 <html lang="id"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Sambutan Kepala Sekolah - SMP Negeri 1 Sape</title>
+<meta name="description" content="Sambutan resmi dari Kepala SMP Negeri 1 Sape.">
 <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 <link rel="stylesheet" href="../assets/css/style.css">
 </head><body>
 <?php include '../includes/navbar.php'; ?>
 <div class="breadcrumb"><div class="container"><div class="breadcrumb-list"><a href="../index.php">Beranda</a><span class="sep">/</span><span>Kepala Sekolah</span></div></div></div>
-<div class="page-hero"><div class="container"><h1>Kepala Sekolah</h1><p>Sambutan Kepala SMP Negeri 1 Sape</p></div></div>
-<div style="padding:32px 0"><div class="container">
+<div class="page-hero"><div class="container"><h1><i class="fas fa-user-tie" style="margin-right:10px;opacity:.85"></i>Kepala Sekolah</h1><p>Sambutan Kepala SMP Negeri 1 Sape</p></div></div>
+<div class="page-body"><div class="container">
 <?php if($kepsek): ?>
-<div class="content-block">
+<div class="content-block fade-in">
   <div class="sambutan-layout">
     <div class="sambutan-photo-wrap">
       <div class="sambutan-photo"><img src="<?php echo $kepsek['foto']?'../assets/images/'.$kepsek['foto']:'../assets/images/kepsek-foto.jpg'; ?>" alt="Kepala Sekolah" loading="lazy"></div>

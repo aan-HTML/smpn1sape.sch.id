@@ -5,14 +5,17 @@ $in_p=(strpos($_SERVER['PHP_SELF'],'/pages/')!==false);
 $base=$in_p?'../':'';
 $cur=basename($_SERVER['PHP_SELF']);
 ?>
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="Navigasi utama">
     <div class="container">
         <div class="nav-container">
-            <a href="<?php echo $base; ?>index.php" class="nav-brand">
-                <img src="<?php echo $base; ?>assets/images/logo-sekolah.png" alt="Logo" class="nav-logo" loading="lazy">
-                <div class="nav-title"><h1>SMP Negeri 1 Sape</h1><p>Kabupaten Bima, Nusa Tenggara Barat</p></div>
+            <a href="<?php echo $base; ?>index.php" class="nav-brand" aria-label="Beranda SMP Negeri 1 Sape">
+                <img src="<?php echo $base; ?>assets/images/logo-sekolah.png" alt="Logo SMP Negeri 1 Sape" class="nav-logo" loading="lazy" width="46" height="46">
+                <div class="nav-title">
+                    <h1>SMP Negeri 1 Sape</h1>
+                    <p>Kabupaten Bima &middot; Nusa Tenggara Barat</p>
+                </div>
             </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu"><i class="fas fa-bars"></i></button>
             <ul class="nav-menu" id="navMenu">
                 <!-- Mobile Menu Header (hanya tampil di mobile) -->
                 <li class="mobile-menu-header">
@@ -32,23 +35,23 @@ $cur=basename($_SERVER['PHP_SELF']);
                         <a href="<?php echo htmlspecialchars($yt); ?>" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </li>
-                <!-- Menu Items (sama seperti aslinya) -->
+                <!-- Menu Items -->
                 <li><a href="<?php echo $base; ?>index.php" <?php echo($cur=='index.php')?'class="active"':'';?>><i class="fas fa-home"></i> Beranda</a></li>
                 <li><a href="<?php echo $base; ?>pages/visi-misi.php" <?php echo($cur=='visi-misi.php')?'class="active"':'';?>><i class="fas fa-star"></i> Visi &amp; Misi</a></li>
                 <li><a href="<?php echo $base; ?>pages/profil.php" <?php echo($cur=='profil.php')?'class="active"':'';?>><i class="fas fa-school"></i> Profil</a></li>
                 <li><a href="<?php echo $base; ?>pages/postingan.php" <?php echo($cur=='postingan.php')?'class="active"':'';?>><i class="fas fa-newspaper"></i> Postingan</a></li>
-                <li class="nav-search-li"><button class="nav-search-btn" id="searchToggleBtn" aria-label="Cari"><i class="fas fa-search"></i></button></li>
+                <li class="nav-search-li"><button class="nav-search-btn" id="searchToggleBtn" aria-label="Buka pencarian"><i class="fas fa-search"></i></button></li>
                 <li class="nav-ppdb"><a href="<?php echo $base; ?>ppdb.php"><i class="fas fa-user-graduate"></i> PPDB</a></li>
                 <!-- PPDB button khusus di mobile menu bagian bawah -->
-                <li class="mobile-ppdb-bottom"><a href="<?php echo $base; ?>ppdb.php"><i class="fas fa-user-graduate"></i> PPDB</a></li>
+                <li class="mobile-ppdb-bottom"><a href="<?php echo $base; ?>ppdb.php"><i class="fas fa-user-graduate"></i> Daftar PPDB</a></li>
             </ul>
         </div>
     </div>
-    <div class="search-overlay" id="searchOverlay">
-        <button class="search-close-btn" id="searchCloseBtn" aria-label="Tutup Pencarian">&times;</button>
+    <div class="search-overlay" id="searchOverlay" role="search" aria-label="Pencarian">
+        <button class="search-close-btn" id="searchCloseBtn" aria-label="Tutup pencarian">&times;</button>
         <form action="<?php echo $base; ?>pages/postingan.php" method="GET">
-            <input type="text" name="q" placeholder="Ketik untuk mencari..." autocomplete="off">
-            <button type="submit"><i class="fas fa-search"></i></button>
+            <input type="text" name="q" placeholder="Ketik untuk mencari..." autocomplete="off" aria-label="Kata kunci pencarian">
+            <button type="submit" aria-label="Cari"><i class="fas fa-search"></i></button>
         </form>
     </div>
     <div class="nav-overlay" id="navOverlay"></div>

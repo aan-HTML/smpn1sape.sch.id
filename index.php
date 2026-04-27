@@ -97,7 +97,7 @@ $ekskul_icons=['fa-hiking','fa-flag','fa-drum','fa-futbol','fa-music','fa-langua
 
 <!-- Hero Banner -->
 <div class="hero-banner">
-  <img src="assets/images/hero.webp" alt="SMP Negeri 1 Sape" loading="eager">
+  <img src="assets/images/hero.webp" alt="SMP Negeri 1 Sape" loading="eager" fetchpriority="high">
 </div>
 
 <!-- Quick Nav -->
@@ -161,16 +161,14 @@ $ekskul_icons=['fa-hiking','fa-flag','fa-drum','fa-futbol','fa-music','fa-langua
               <?php if($p['foto']): ?>
               <img src="assets/images/<?php echo htmlspecialchars($p['foto']); ?>" alt="<?php echo htmlspecialchars($p['nama']); ?>" loading="lazy">
               <?php else: ?>
-              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--primary-light)">
-                <i class="fas fa-trophy" style="font-size:48px;color:var(--primary);opacity:.4"></i>
-              </div>
+              <div class="prestasi-thumb-fallback"><i class="fas fa-trophy"></i></div>
               <?php endif; ?>
               <div class="prestasi-badge"><i class="fas fa-medal"></i> <?php echo htmlspecialchars($p['juara']); ?></div>
             </div>
             <div class="prestasi-card-body">
-              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px">
-                <span style="background:var(--primary-light);color:var(--primary);padding:2px 10px;border-radius:20px;font-size:11px;font-weight:700"><?php echo htmlspecialchars($p['tingkat']); ?></span>
-                <span style="background:#fef3c7;color:#92400e;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:700"><?php echo htmlspecialchars($p['kategori']); ?></span>
+              <div class="prestasi-tags">
+                <span class="tag-primary"><?php echo htmlspecialchars($p['tingkat']); ?></span>
+                <span class="tag-accent"><?php echo htmlspecialchars($p['kategori']); ?></span>
               </div>
               <h3><?php echo htmlspecialchars($p['nama']); ?></h3>
               <p><?php echo htmlspecialchars($p['nama_lomba']); ?></p>
@@ -181,9 +179,9 @@ $ekskul_icons=['fa-hiking','fa-flag','fa-drum','fa-futbol','fa-music','fa-langua
         <?php endforeach; ?>
       </div>
     </div>
-    <div class="carousel-arrows" style="justify-content:center;margin-top:20px">
-      <button class="arrow-btn" id="kjPrev"><i class="fas fa-chevron-left"></i></button>
-      <button class="arrow-btn" id="kjNext"><i class="fas fa-chevron-right"></i></button>
+    <div class="carousel-arrows carousel-arrows-center">
+      <button class="arrow-btn" id="kjPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
+      <button class="arrow-btn" id="kjNext" aria-label="Berikutnya"><i class="fas fa-chevron-right"></i></button>
     </div>
     <?php else: ?><div class="empty-state"><i class="fas fa-trophy"></i><p>Belum ada data kejuaraan.</p></div><?php endif; ?>
   </div>
@@ -210,9 +208,9 @@ $ekskul_icons=['fa-hiking','fa-flag','fa-drum','fa-futbol','fa-music','fa-langua
         <?php endforeach; ?>
       </div>
     </div>
-    <div class="carousel-arrows" style="justify-content:center;margin-top:20px">
-      <button class="arrow-btn ekskul-prev"><i class="fas fa-chevron-left"></i></button>
-      <button class="arrow-btn ekskul-next"><i class="fas fa-chevron-right"></i></button>
+    <div class="carousel-arrows carousel-arrows-center">
+      <button class="arrow-btn ekskul-prev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
+      <button class="arrow-btn ekskul-next" aria-label="Berikutnya"><i class="fas fa-chevron-right"></i></button>
     </div>
     <?php else: ?><div class="empty-state"><i class="fas fa-star"></i><p>Belum ada ekstrakurikuler.</p></div><?php endif; ?>
   </div>
@@ -241,7 +239,7 @@ $ekskul_icons=['fa-hiking','fa-flag','fa-drum','fa-futbol','fa-music','fa-langua
         </div>
       </div>
       <?php endforeach; else: ?>
-      <div class="empty-state" style="grid-column:1/-1"><i class="fas fa-newspaper"></i><p>Belum ada berita.</p></div>
+      <div class="empty-state full-row"><i class="fas fa-newspaper"></i><p>Belum ada berita.</p></div>
       <?php endif; ?>
     </div>
   </div>
@@ -344,8 +342,6 @@ $galeri_post = []; if($res_galeri_post){while($r=$res_galeri_post->fetch_assoc()
 </section>
 
 <?php include 'includes/footer.php'; ?>
-
-<button class="scroll-top" id="scrollTop" aria-label="Scroll ke atas"><i class="fas fa-chevron-up"></i></button>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

@@ -113,7 +113,7 @@ function render_konten($konten) {
 </head><body>
 <?php include '../includes/navbar.php'; ?>
 <div class="breadcrumb"><div class="container"><div class="breadcrumb-list"><a href="../index.php">Beranda</a><span class="sep">/</span><a href="../pages/berita.php">Berita</a><span class="sep">/</span><span><?php echo htmlspecialchars(substr($berita['judul'],0,40)).'...'; ?></span></div></div></div>
-<div style="padding:32px 0"><div class="container">
+<div class="page-body"><div class="container">
 <div class="post-layout">
   <!-- Main Content -->
   <article>
