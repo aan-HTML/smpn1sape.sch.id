@@ -9,15 +9,17 @@
 </head><body>
 <?php include '../includes/navbar.php'; ?>
 <div class="breadcrumb"><div class="container"><div class="breadcrumb-list"><a href="../index.php">Beranda</a><span class="sep">/</span><span>Sejarah</span></div></div></div>
-<div class="page-hero"><div class="container"><h1>Sejarah Sekolah</h1><p>Perjalanan panjang SMP Negeri 1 Sape</p></div></div>
-<div style="padding:32px 0"><div class="container">
-<div class="content-block">
-<h3><i class="fas fa-history" style="color:var(--primary);margin-right:8px"></i>Sejarah SMP Negeri 1 Sape</h3>
+<div class="page-hero"><div class="container"><h1><i class="fas fa-history" style="margin-right:10px;opacity:.85"></i>Sejarah Sekolah</h1><p>Perjalanan panjang SMP Negeri 1 Sape</p></div></div>
+<div class="page-body"><div class="container">
+<div class="content-block fade-in">
+<h3><i class="fas fa-scroll"></i>Sejarah SMP Negeri 1 Sape</h3>
 <?php if(!empty($profil['sejarah'])): ?>
-<?php foreach(explode("\n",trim($profil['sejarah'])) as $p): if(trim($p)): ?><p style="color:var(--text-light);line-height:1.8;margin-bottom:12px"><?php echo htmlspecialchars(trim($p)); ?></p><?php endif; endforeach; ?>
+<?php foreach(explode("\n",trim($profil['sejarah'])) as $p): if(trim($p)): ?>
+<p><?php echo htmlspecialchars(trim($p)); ?></p>
+<?php endif; endforeach; ?>
 <?php else: ?>
-<p style="color:var(--text-light);line-height:1.8">SMP Negeri 1 Sape merupakan sekolah menengah pertama negeri yang berdiri di Kecamatan Sape, Kabupaten Bima, Nusa Tenggara Barat. Sekolah ini telah berdiri selama beberapa dekade dan telah melahirkan ribuan alumni yang tersebar di seluruh penjuru nusantara.</p>
-<p style="color:var(--text-light);line-height:1.8">Dengan motto <em>"Berkarakter, Berprestasi, Berakhlak Mulia"</em>, SMPN 1 Sape terus berkomitmen untuk memberikan pendidikan terbaik bagi generasi penerus bangsa.</p>
+<p>SMP Negeri 1 Sape merupakan sekolah menengah pertama negeri yang berdiri di Kecamatan Sape, Kabupaten Bima, Nusa Tenggara Barat. Sekolah ini telah berdiri selama beberapa dekade dan telah melahirkan ribuan alumni yang tersebar di seluruh penjuru nusantara.</p>
+<p>Dengan motto <em>&ldquo;Berkarakter, Berprestasi, Berakhlak Mulia&rdquo;</em>, SMPN 1 Sape terus berkomitmen untuk memberikan pendidikan terbaik bagi generasi penerus bangsa.</p>
 <?php endif; ?>
 </div>
 </div></div>

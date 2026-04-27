@@ -21,16 +21,16 @@ $res = $conn->query("SELECT * FROM berita $where ORDER BY created_at DESC LIMIT 
 </head><body>
 <?php include '../includes/navbar.php'; ?>
 <div class="breadcrumb"><div class="container"><div class="breadcrumb-list"><a href="../index.php">Beranda</a><span class="sep">/</span><span>Berita</span></div></div></div>
-<div class="page-hero"><div class="container"><h1><i class="fas fa-newspaper" style="margin-right:10px;opacity:.8"></i>Berita Terkini</h1><p>Informasi dan kabar terbaru dari SMP Negeri 1 Sape</p></div></div>
-<div style="padding:32px 0"><div class="container">
+<div class="page-hero"><div class="container"><h1><i class="fas fa-newspaper" style="margin-right:10px;opacity:.85"></i>Berita Terkini</h1><p>Informasi dan kabar terbaru dari SMP Negeri 1 Sape</p></div></div>
+<div class="page-body"><div class="container">
 
 <!-- Search -->
-<form action="" method="GET" style="display:flex;max-width:480px;margin-bottom:28px;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;background:var(--white)">
-  <input type="text" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Cari berita..." style="flex:1;padding:11px 16px;border:none;font-size:14px;outline:none;font-family:inherit;color:var(--text);background:transparent">
-  <button type="submit" style="padding:11px 18px;background:var(--primary);color:#fff;border:none;cursor:pointer;font-size:14px"><i class="fas fa-search"></i></button>
+<form action="" method="GET" class="search-form" role="search">
+  <input type="text" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Cari berita..." aria-label="Cari berita">
+  <button type="submit"><i class="fas fa-search"></i> Cari</button>
 </form>
 <?php if($q): ?>
-<p style="font-size:13px;color:var(--text-light);margin-bottom:16px">Hasil pencarian: <strong>"<?php echo htmlspecialchars($q); ?>"</strong> — <?php echo $total; ?> berita ditemukan <?php if($total>0): ?><a href="berita.php" style="color:var(--primary);margin-left:8px"><i class="fas fa-times-circle"></i> Reset</a><?php endif; ?></p>
+<p class="search-meta">Hasil pencarian: <strong>&ldquo;<?php echo htmlspecialchars($q); ?>&rdquo;</strong> &mdash; <?php echo $total; ?> berita ditemukan <?php if($total>0): ?><a href="berita.php"><i class="fas fa-times-circle"></i> Reset</a><?php endif; ?></p>
 <?php endif; ?>
 
 <div class="berita-grid">
@@ -38,7 +38,7 @@ $res = $conn->query("SELECT * FROM berita $where ORDER BY created_at DESC LIMIT 
   $url_b = !empty($row['slug']) ? '../berita/'.$row['slug'] : 'berita-detail.php?id='.$row['id'];
   $kat = !empty($row['kategori']) ? htmlspecialchars($row['kategori']) : 'Berita';
 ?>
-<div class="berita-card">
+<div class="berita-card fade-in">
   <a href="<?php echo $url_b; ?>" class="berita-card-thumb">
     <img src="<?php echo get_thumb($row['gambar']); ?>" alt="<?php echo htmlspecialchars($row['judul']); ?>" loading="lazy" decoding="async" width="400" height="225">
     <span class="berita-card-badge"><?php echo $kat; ?></span>
@@ -53,16 +53,18 @@ $res = $conn->query("SELECT * FROM berita $where ORDER BY created_at DESC LIMIT 
   </div>
 </div>
 <?php endwhile; else: ?>
-<div class="empty-state" style="grid-column:1/-1"><i class="fas fa-newspaper"></i><p><?php echo $q ? 'Tidak ada berita yang cocok.' : 'Belum ada berita.'; ?></p></div>
+<div class="empty-state full-row"><i class="fas fa-newspaper"></i><p><?php echo $q ? 'Tidak ada berita yang cocok.' : 'Belum ada berita.'; ?></p></div>
 <?php endif; ?>
 </div>
 
 <?php if($total_pages>1): ?>
-<div style="display:flex;justify-content:center;gap:8px;margin-top:32px;flex-wrap:wrap">
-<?php if($page>1): ?><a href="?<?php echo http_build_query(array_merge($_GET,['page'=>$page-1])); ?>" style="padding:8px 14px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"><i class="fas fa-chevron-left"></i></a><?php endif; ?>
-<?php for($i=max(1,$page-2);$i<=min($total_pages,$page+2);$i++): ?><a href="?<?php echo http_build_query(array_merge($_GET,['page'=>$i])); ?>" style="padding:8px 14px;border:1.5px solid <?php echo $i==$page?'var(--primary)':'var(--border)'; ?>;border-radius:6px;font-size:13px;background:<?php echo $i==$page?'var(--primary)':'var(--white)'; ?>;color:<?php echo $i==$page?'#fff':'var(--text)'; ?>"><?php echo $i; ?></a><?php endfor; ?>
-<?php if($page<$total_pages): ?><a href="?<?php echo http_build_query(array_merge($_GET,['page'=>$page+1])); ?>" style="padding:8px 14px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"><i class="fas fa-chevron-right"></i></a><?php endif; ?>
-</div>
+<nav class="pagination" aria-label="Navigasi halaman">
+  <?php if($page>1): ?><a href="?<?php echo http_build_query(array_merge($_GET,['page'=>$page-1])); ?>" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></a><?php endif; ?>
+  <?php for($i=max(1,$page-2);$i<=min($total_pages,$page+2);$i++): ?>
+    <a href="?<?php echo http_build_query(array_merge($_GET,['page'=>$i])); ?>"<?php echo $i==$page?' class="active"':''; ?>><?php echo $i; ?></a>
+  <?php endfor; ?>
+  <?php if($page<$total_pages): ?><a href="?<?php echo http_build_query(array_merge($_GET,['page'=>$page+1])); ?>" aria-label="Berikutnya"><i class="fas fa-chevron-right"></i></a><?php endif; ?>
+</nav>
 <?php endif; ?>
 
 </div></div>

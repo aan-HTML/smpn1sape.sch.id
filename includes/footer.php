@@ -4,7 +4,7 @@ $base_f=$in_p?'../':'';
 $pf=isset($profil_nav)?$profil_nav:(isset($profil)?$profil:[]);
 $sf=isset($settings_nav)?$settings_nav:(isset($settings)?$settings:[]);
 ?>
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="footer-deco"></div>
   <div class="container">
     <div class="footer-3boxes">
@@ -29,7 +29,7 @@ $sf=isset($settings_nav)?$settings_nav:(isset($settings)?$settings:[]);
       <div class="fbox">
         <div class="fbox-school">
           <div class="fbox-school-head">
-            <img src="<?php echo $base_f; ?>assets/images/logo-sekolah.png" alt="Logo" loading="lazy">
+            <img src="<?php echo $base_f; ?>assets/images/logo-sekolah.png" alt="Logo SMP Negeri 1 Sape" loading="lazy" width="54" height="54">
             <h3>SMP Negeri 1 Sape</h3>
           </div>
           <div class="fbox-info-list">
@@ -50,7 +50,7 @@ $sf=isset($settings_nav)?$settings_nav:(isset($settings)?$settings:[]);
   <div class="footer-copy">
     <div class="container">
       &copy; 2025 &ndash; <?php echo date('Y'); ?> | <span>SISTEM INFORMASI MANAJEMEN SEKOLAH SMP Negeri 1 Sape</span><br>
-      Powered by <span>Siswa SMPN 1 Sape</span> Created by <span style="color:#e74c3c">&#9829;</span>
+      Powered by <span>Siswa SMPN 1 Sape</span> Created with <span style="color:#C9A84C">&#9829;</span>
     </div>
   </div>
 </footer>
@@ -61,6 +61,15 @@ $sf=isset($settings_nav)?$settings_nav:(isset($settings)?$settings:[]);
 (function(){
   // Scroll top logic
   var s=document.getElementById('scrollTop');
-  if(s){window.addEventListener('scroll',function(){s.classList.toggle('show',window.scrollY>300);});s.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+  if(s){window.addEventListener('scroll',function(){s.classList.toggle('show',window.scrollY>300);},{passive:true});s.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+  // Fade-in observer (ensures all pages get reveal animations)
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+    },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.fade-in').forEach(function(el){io.observe(el);});
+  }else{
+    document.querySelectorAll('.fade-in').forEach(function(el){el.classList.add('visible');});
+  }
 })();
 </script>
